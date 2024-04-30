@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# WORK DIRECTORIES
+alias myrep="cd ~/repos/my_repos"
+
+# GIT
+alias clone="git clone"

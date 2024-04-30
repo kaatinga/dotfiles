@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+autoload -Uz vcs_info
+precmd_vcs_info() {
+  vcs_info
+}
+precmd_functions+=( precmd_vcs_info )
+
+# Function to check for uncommitted changes
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{green}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
+
+# Formats when there are changes
+zstyle ':vcs_info:git+set-message:*' formats '%F{red}(%b)%f %F{240}%r%f'
+zstyle ':vcs_info:git+set-message:*' actionformats '%F{red}(%b|%a)%f %F{240}%r%f'
+
+# Configure vcs_info for normal and changed states
+zstyle ':vcs_info:git:*' formats '%F{yellow}(%b) %F{240}%r %f'
+zstyle ':vcs_info:git:*' enable git
+
+setopt prompt_subst
+PROMPT='%F{240}%n@%m %F{blue}%1~ ${vcs_info_msg_0_} > '
