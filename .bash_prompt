@@ -1,25 +1,14 @@
 #!/bin/zsh
 
-# Function to update vcs_info
-precmd_vcs_info() {
-  vcs_info
-}
+precmd_vcs_info() {vcs_info}
 precmd_functions+=( precmd_vcs_info )
 
-# Enable prompt substitution
 setopt prompt_subst
 
-# Load vcs_info
 autoload -Uz vcs_info
 
-# Enable vcs_info
 zstyle ':vcs_info:*' enable git
 
-# Indicate checking for changes
-zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats ' %F{red}%b%f %F{255}%r%f'
 
-# Set format for changes
-zstyle ':vcs_info:git:*' stagedstr '%F{red}(%b|STAGED)%f'
-zstyle ':vcs_info:git:*' unstagedstr '%F{red}(%b|UNSTAGED)%f'
-
-PROMPT='%F{240}%n@%m %F{blue}%1~ ${vcs_info_msg_0_} > '
+PROMPT='%F{240}%n@%m %F{blue}%1~${vcs_info_msg_0_} > '
