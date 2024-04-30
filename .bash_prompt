@@ -15,10 +15,6 @@ autoload -Uz vcs_info
 # Enable vcs_info
 zstyle ':vcs_info:*' enable git
 
-# Set base format
-zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%f %F{240}%r%f'
-zstyle ':vcs_info:git:*' actionformats '%F{yellow}(%b|%a)%f %F{240}%r%f'
-
 # Indicate checking for changes
 zstyle ':vcs_info:git:*' check-for-changes true
 
@@ -26,5 +22,4 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '%F{red}(%b|STAGED)%f'
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}(%b|UNSTAGED)%f'
 
-setopt prompt_subst
 PROMPT='%F{240}%n@%m %F{blue}%1~ ${vcs_info_msg_0_} > '
